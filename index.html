@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitStore - Sua Loja Fitness</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center mb-4 md:mb-0">
+                <h1 class="text-3xl font-bold text-indigo-600 flex items-center">
+                    <i class="fas fa-dumbbell mr-2"></i> FitStore
+                </h1>
+            </div>
+            <nav class="flex flex-wrap items-center gap-4">
+                <button onclick="document.getElementById('produtos').scrollIntoView({behavior: 'smooth'})" class="px-4 py-2 text-gray-700 hover:text-indigo-600 transition font-medium">Produtos</button>
+                <button onclick="document.getElementById('sobre').scrollIntoView({behavior: 'smooth'})" class="px-4 py-2 text-gray-700 hover:text-indigo-600 transition font-medium">Sobre</button>
+                <button onclick="document.getElementById('contato').scrollIntoView({behavior: 'smooth'})" class="px-4 py-2 text-gray-700 hover:text-indigo-600 transition font-medium">Contato</button>
+                <div id="cart" onclick="toggleCart()" class="cursor-pointer flex items-center px-4 py-2 bg-indigo-100 text-indigo-700 rounded-lg hover:bg-indigo-200 transition relative">
+                    <i class="fas fa-shopping-cart mr-2"></i>
+                    <span id="cart-count">0</span>
+                    <span id="cart-badge" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg text-white py-32">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">Equipamentos e Suplementos para sua Performance</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto animate-fade-in delay-100">Confira nossa linha exclusiva de produtos fitness com os melhores preços do mercado!</p>
+            <button onclick="document.getElementById('produtos').scrollIntoView({behavior: 'smooth'})" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg transition transform hover:scale-105 animate-fade-in delay-200 flex items-center mx-auto">
+                <i class="fas fa-chevron-down mr-2"></i> Ver Produtos
+            </button>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <main id="produtos" class="container mx-auto px-4 py-16">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-2">Produtos em Destaque</h2>
+            <div class="w-20 h-1 bg-indigo-600 mx-auto"></div>
+        </div>
+                
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Product 1 -->
+            <div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Halteres" class="w-full h-48 object-cover">
+                    <span class="absolute top-2 right-2 bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">NOVO</span>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-semibold">Halteres</h3>
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">EM ESTOQUE</span>
+                    </div>
+                    <p class="text-gray-600 mb-4 flex items-center">
+                        <span class="text-2xl font-bold text-indigo-600 mr-2">AOA 62.000</span>
+                        <span class="text-sm line-through text-gray-400">AOA 68.000</span>
+                    </p>
+                    <div class="flex items-center mb-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span class="text-gray-500 text-sm ml-2">(24)</span>
+                    </div>
+                    <button onclick="addToCart('Halteres', 62000)" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg transition flex items-center justify-center">
+                        <i class="fas fa-cart-plus mr-2"></i> Adicionar
+                    </button>
+                </div>
+            </div>
+                        
+            <!-- Product 2 -->
+            <div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                <img src="https://images.unsplash.com/photo-1571019614242-c955c4576b1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Barra Olímpica" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-semibold">Barra Olímpica</h3>
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">EM ESTOQUE</span>
+                    </div>
+                    <p class="text-gray-600 mb-4 flex items-center">
+                        <span class="text-2xl font-bold text-indigo-600 mr-2">AOA 130.000</span>
+                    </p>
+                    <div class="flex items-center mb-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span class="text-gray-500 text-sm ml-2">(18)</span>
+                    </div>
+                    <button onclick="addToCart('Barra Olímpica', 130000)" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg transition flex items-center justify-center">
+                        <i class="fas fa-cart-plus mr-2"></i> Adicionar
+                    </button>
+                </div>
+            </div>
+                        
+            <!-- Product 3 -->
+            <div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Suplemento Whey" class="w-full h-48 object-cover">
+                    <span class="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">OFERTA</span>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-semibold">Whey Protein 1kg</h3>
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">EM ESTOQUE</span>
+                    </div>
+                    <p class="text-gray-600 mb-4 flex items-center">
+                        <span class="text-2xl font-bold text-indigo-600 mr-2">AOA 52.000</span>
+                        <span class="text-sm line-through text-gray-400">AOA 58.000</span>
+                    </p>
+                    <div class="flex items-center mb-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span class="text-gray-500 text-sm ml-2">(42)</span>
+                    </div>
+                    <button onclick="addToCart('Whey Protein 1kg', 52000)" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg transition flex items-center justify-center">
+                        <i class="fas fa-cart-plus mr-2"></i> Adicionar
+                    </button>
+                </div>
+            </div>
+                        
+            <!-- Product 4 -->
+            <div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                <img src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1631&q=80" alt="Corda de Pular" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-semibold">Corda de Pular</h3>
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">EM ESTOQUE</span>
+                    </div>
+                    <p class="text-gray-600 mb-4 flex items-center">
+                        <span class="text-2xl font-bold text-indigo-600 mr-2">AOA 23.500</span>
+                    </p>
+                    <div class="flex items-center mb-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span class="text-gray-500 text-sm ml-2">(15)</span>
+                    </div>
+                    <button onclick="addToCart('Corda de Pular', 23500)" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg transition flex items-center justify-center">
+                        <i class="fas fa-cart-plus mr-2"></i> Adicionar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- More Products Button -->
+        <div class="text-center mt-12">
+            <button class="px-6 py-3 border-2 border-indigo-600 text-indigo-600 font-medium rounded-lg hover:bg-indigo-600 hover:text-white transition">
+                Ver Mais Produtos
+            </button>
+        </div>
+    </main>
+
+    <!-- Cart Section -->
+    <section id="cart-section" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="absolute right-0 top-0 h-full w-full md:w-1/2 lg:w-1/3 bg-white shadow-lg overflow-y-auto transform transition-transform duration-300 translate-x-full">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold flex items-center">
+                        <i class="fas fa-shopping-cart mr-2 text-indigo-600"></i> Carrinho
+                    </h2>
+                    <button onclick="toggleCart()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                            
+                <div id="cart-items" class="mb-6">
+                    <!-- Cart items will be added here dynamically -->
+                    <div class="text-center py-12">
+                        <i class="fas fa-shopping-cart text-4xl text-gray-300 mb-4"></i>
+                        <p class="text-gray-500">Seu carrinho está vazio</p>
+                        <button onclick="document.getElementById('produtos').scrollIntoView({behavior: 'smooth'}); toggleCart();" class="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
+                            Ver Produtos
+                        </button>
+                    </div>
+                </div>
+                            
+                <div class="border-t pt-4">
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-600">Subtotal:</span>
+                        <span class="font-medium">AOA <span id="cart-subtotal">0.00</span></span>
+                    </div>
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-600">Entrega:</span>
+                        <span class="font-medium">AOA 5.000</span>
+                    </div>
+                    <div class="flex justify-between text-lg font-semibold mb-4">
+                        <span>Total:</span>
+                        <span>AOA <span id="cart-total">5.000</span></span>
+                    </div>
+                    <button onclick="checkout()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg mt-4 transition flex items-center justify-center">
+                        <i class="fas fa-credit-card mr-2"></i> Finalizar Compra
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="bg-gray-100 py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="text-indigo-600 text-4xl mb-4">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Entrega Rápida</h3>
+                    <p class="text-gray-600">Receba seus produtos em até 48h na região de Luanda</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="text-indigo-600 text-4xl mb-4">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Garantia</h3>
+                    <p class="text-gray-600">Todos os produtos com garantia de 6 meses</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="text-indigo-600 text-4xl mb-4">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Pagamento Seguro</h3>
+                    <p class="text-gray-600">Diversas formas de pagamento incluindo MBWay</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre" class="bg-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Sobre a FitStore" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-6">Sobre a FitStore</h2>
+                    <p class="text-lg text-gray-700 mb-4">
+                        Fundada em 2020, a FitStore nasceu da paixão por fitness e bem-estar. Nossa missão é fornecer equipamentos de qualidade e suplementos nutricionais para ajudar você a alcançar seus objetivos.
+                    </p>
+                    <p class="text-lg text-gray-700 mb-6">
+                        Trabalhamos apenas com marcas reconhecidas e testadas, garantindo a segurança e eficácia de todos os nossos produtos.
+                    </p>
+                    <div class="flex items-center">
+                        <div class="mr-4">
+                            <div class="text-3xl font-bold text-indigo-600">3+</div>
+                            <div class="text-gray-600">Anos no mercado</div>
+                        </div>
+                        <div class="mr-4">
+                            <div class="text-3xl font-bold text-indigo-600">500+</div>
+                            <div class="text-gray-600">Clientes satisfeitos</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-indigo-600">50+</div>
+                            <div class="text-gray-600">Produtos disponíveis</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="bg-gray-100 py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">O Que Nossos Clientes Dizem</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="flex items-center text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="text-gray-500 text-sm">Há 1 semana</span>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Os halteres são excelentes! Chegaram antes do prazo e a qualidade é impressionante."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos Silva" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-medium">Carlos Silva</h4>
+                            <p class="text-gray-500 text-sm">Atleta</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="flex items-center text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="text-gray-500 text-sm">Há 3 semanas</span>
+                    </div>
+                    <p class="text-gray-700 mb-4">"O whey protein tem um ótimo sabor e mixabilidade. Já comprei 3 vezes e recomendo!"</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Ana Santos" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-medium">Ana Santos</h4>
+                            <p class="text-gray-500 text-sm">Nutricionista</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="flex items-center text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="text-gray-500 text-sm">Há 1 mês</span>
+                    </div>
+                    <p class="text-gray-700 mb-4">"A barra olímpica é resistente e tem um ótimo grip. Excelente custo-benefício."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Miguel Costa" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-medium">Miguel Costa</h4>
+                            <p class="text-gray-500 text-sm">Personal Trainer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Entre em Contato</h2>
+            
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Contact Form -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-4">Envie sua Mensagem</h3>
+                    <form>
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 mb-2">Nome</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="block text-gray-700 mb-2">Mensagem</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg transition">
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm mb-6">
+                        <h3 class="text-xl font-semibold mb-4">Informações de Contato</h3>
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-map-marker-alt text-indigo-600 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-medium">Endereço</h4>
+                                <p class="text-gray-600">Rua da Fitness, 123<br>Luanda, Angola</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-phone-alt text-indigo-600 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-medium">Telefone</h4>
+                                <p class="text-gray-600">+244 920 194 77</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope text-indigo-600 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-medium">Email</h4>
+                                <p class="text-gray-600">jorgemanuelchilulo7@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <h3 class="text-xl font-semibold mb-4">Horário de Funcionamento</h3>
+                        <div class="flex justify-between py-2 border-b">
+                            <span class="text-gray-700">Segunda - Sexta</span>
+                            <span class="font-medium">9:00 - 18:00</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b">
+                            <span class="text-gray-700">Sábado</span>
+                            <span class="font-medium">9:00 - 14:00</span>
+                        </div>
+                        <div class="flex justify-between py-2">
+                            <span class="text-gray-700">Domingo</span>
+                            <span class="font-medium">Fechado</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="bg-indigo-600 text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold mb-4">Assine Nossa Newsletter</h2>
+            <p class="mb-6 max-w-2xl mx-auto">Receba ofertas exclusivas e novidades sobre nossos produtos diretamente no seu email.</p>
+            <form class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Seu email" class="flex-grow px-4 py-2 rounded-l-lg focus:outline-none text-gray-900">
+                <button type="submit" class="bg-indigo-800 hover:bg-indigo-900 px-6 py-2 rounded-r-lg transition">
+                    Assinar
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-dumbbell mr-2"></i> FitStore
+                    </h3>
+                    <p class="text-gray-400">Sua loja de equipamentos e suplementos fitness em Angola.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Início</a></li>
+                        <li><a href="#produtos" class="text-gray-400 hover:text-white transition">Produtos</a></li>
+                        <li><a href="#sobre" class="text-gray-400 hover:text-white transition">Sobre</a></li>
+                        <li><a href="#contato" class="text-gray-400 hover:text-white transition">Contato</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Categorias</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Equipamentos</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Suplementos</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Vestuário</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Acessórios</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Redes Sociais</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/jorgeManuel10k" target="_blank" class="text-gray-400 hover:text-white transition text-xl">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@JorgeManuel" target="_blank" class="text-gray-400 hover:text-white transition text-xl">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.facebook.com/jorge.chilulo.10" target="_blank" class="text-gray-400 hover:text-white transition text-xl">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://wa.me/932019477" target="_blank" class="text-gray-400 hover:text-white transition text-xl">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                    <h4 class="text-lg font-semibold mt-6 mb-2">Formas de Pagamento</h4>
+                    <div class="flex space-x-2">
+                        <i class="fab fa-cc-visa text-2xl text-gray-400"></i>
+                        <i class="fab fa-cc-mastercard text-2xl text-gray-400"></i>
+                        <i class="fas fa-money-bill-wave text-2xl text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-6 text-center text-gray-400">
+                <p>&copy; 2025 FitStore. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
